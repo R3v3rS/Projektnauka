@@ -4,32 +4,31 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int liczbaFirst;
-        int podanaLiczba;
+        int lowerLimit;
+        int upperLimit;
         int suma = 0;
         ArrayList<Integer> list = new ArrayList<>();
         while(true) {
-            System.out.println("Podaj liczbe z dolnego zakresu:");
-            liczbaFirst = scan.nextInt();
-            System.out.println("Podaj liczbe z górnego zakresu:");
-            podanaLiczba = scan.nextInt();
-            if (liczbaFirst > podanaLiczba) {
+            System.out.println("Podaj liczbę z dolnego zakresu:");
+            lowerLimit = scan.nextInt();
+            System.out.println("Podaj liczbę z górnego zakresu:");
+            upperLimit = scan.nextInt();
+            if (lowerLimit > upperLimit) {
                 System.out.println("Podałeś niepoprawny zakres liczb");
             } else {
                 break;
             }
         }
-        while (liczbaFirst <= podanaLiczba){
-            for (int i = 1; i < liczbaFirst; i++) {
-                if (liczbaFirst %i == 0) {
-                    suma += i;
+        for (int i = lowerLimit; i <= upperLimit; i++) {
+            for (int j = 1; j < i; j++) {
+                if (i % j == 0) {
+                    suma += j;
                 }
             }
-            if (suma == liczbaFirst){
-                list.add(liczbaFirst);
+            if (suma == i) {
+                list.add(i);
             }
-            liczbaFirst++;
-            suma=0;
+            suma = 0;
         }
         System.out.println(list);
     }
