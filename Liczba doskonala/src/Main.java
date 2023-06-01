@@ -1,21 +1,33 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int liczba = 6;
+        Scanner scan = new Scanner(System.in);
+        int liczbaFirst;
+        int podanaLiczba;
         int suma = 0;
-        int podanaLiczba = 100;
         ArrayList<Integer> list = new ArrayList<>();
-        while (liczba < podanaLiczba){
-            for (int i = 1; i < liczba; i++) {
-                if (liczba %i == 0) {
+        while(true) {
+            System.out.println("Podaj liczbe z dolnego zakresu:");
+            liczbaFirst = scan.nextInt();
+            System.out.println("Podaj liczbe z górnego zakresu:");
+            podanaLiczba = scan.nextInt();
+            if (liczbaFirst < podanaLiczba){
+                System.out.println("Podałeś niepoprawny zakres liczb");
+                break;
+            }
+        }
+        while (liczbaFirst < podanaLiczba){
+            for (int i = 1; i < liczbaFirst; i++) {
+                if (liczbaFirst %i == 0) {
                     suma += i;
                 }
             }
-            if (suma == liczba){
-                list.add(liczba);
+            if (suma == liczbaFirst){
+                list.add(liczbaFirst);
             }
-            liczba++;
+            liczbaFirst++;
             suma=0;
         }
 
