@@ -13,12 +13,12 @@ public class Main {
             liczbaFirst = scan.nextInt();
             System.out.println("Podaj liczbe z górnego zakresu:");
             podanaLiczba = scan.nextInt();
-            if (liczbaFirst < podanaLiczba){
+            if (liczbaFirst <= podanaLiczba){
                 System.out.println("Podałeś niepoprawny zakres liczb");
                 break;
             }
         }
-        while (liczbaFirst < podanaLiczba){
+        while (liczbaFirst <= podanaLiczba){
             for (int i = 1; i < liczbaFirst; i++) {
                 if (liczbaFirst %i == 0) {
                     suma += i;
