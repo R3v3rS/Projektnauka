@@ -13,8 +13,9 @@ public class Main {
             liczbaFirst = scan.nextInt();
             System.out.println("Podaj liczbe z górnego zakresu:");
             podanaLiczba = scan.nextInt();
-            if (liczbaFirst <= podanaLiczba){
+            if (liczbaFirst > podanaLiczba) {
                 System.out.println("Podałeś niepoprawny zakres liczb");
+            } else {
                 break;
             }
         }
@@ -30,7 +31,6 @@ public class Main {
             liczbaFirst++;
             suma=0;
         }
-
         System.out.println(list);
     }
 }
