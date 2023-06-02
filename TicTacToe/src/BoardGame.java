@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class BoardGame {
     char[][] game = {
             {' ', ' ', ' '},
@@ -19,25 +21,24 @@ public class BoardGame {
     }
 
     public boolean findWinner(char[][] game) {// po zwroceniu true wygrywa gracz z ostatniego ruchu
-       if (checkCols(game) || checkRows(game) || checkDiags(game)){
-           System.out.println("find");
-           return true;
-       }
+        if (checkCols(game) || checkRows(game) || checkDiags(game)) {
+            return true;
+        }
         return false;
     }
 
     public boolean checkRows(char game[][]) {
-        for (int i = 0; i < game.length; i++){
-            if (game[i][0] != ' ' && game[i][0] == game[i][1] && game[i][0] == game[i][2]){
+        for (int i = 0; i < game.length; i++) {
+            if (game[i][0] != ' ' && game[i][0] == game[i][1] && game[i][0] == game[i][2]) {
                 return true;
-                }
             }
+        }
         return false;
     }
 
     public boolean checkCols(char game[][]) {
-        for (int i = 0; i < game.length; i++){
-            if (game[0][i] != ' ' && game[0][i] == game[1][i] && game[0][i] == game[2][i]){
+        for (int i = 0; i < game.length; i++) {
+            if (game[0][i] != ' ' && game[0][i] == game[1][i] && game[0][i] == game[2][i]) {
                 return true;
             }
         }
@@ -45,12 +46,21 @@ public class BoardGame {
     }
 
     public boolean checkDiags(char game[][]) {
-            if (game[0][0] != ' ' && game[0][0] == game[1][1] && game[0][0] == game[2][2]){
-                return true;
-            } else return game[2][2] != ' ' && game[2][2] == game[1][1] && game[2][2] == game[2][0];
+        if (game[0][0] != ' ' && game[0][0] == game[1][1] && game[0][0] == game[2][2]) {
+            return true;
+        } else return game[2][2] != ' ' && game[2][2] == game[1][1] && game[2][2] == game[2][0];
     }
 
-    public boolean checkGame(char game[][]) { // do sprawdzenia czy mozna grac dalej
-        return true;
+    public boolean checkGame(char game[][]) {// do sprawdzenia czy mozna grac dalej
+        char emptyField = ' ';
+        for (int i = 0; i < game.length; i++) {
+            for (int j = 0; j < game[i].length; j++) {
+                if (game[i][j] ==emptyField){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
+
