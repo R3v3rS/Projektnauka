@@ -1,5 +1,7 @@
 public class Game {
     public void startGame() {
+        Player playersOne = new Player();
+        Player playersTwo = new Player();
         BoardGame boardGame = new BoardGame();
         System.out.println("Test wydruku pola gry");
         boardGame.printGameBoard();
