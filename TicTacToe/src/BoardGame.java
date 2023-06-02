@@ -1,14 +1,12 @@
-import java.util.Arrays;
-
 public class BoardGame {
-    char[][] game = {
-            {' ', ' ', ' '},
-            {' ', ' ', ' '},
+    char[][] board = {
+            {'X', ' ', ' '},
+            {' ', 'X', ' '},
             {' ', ' ', ' '}
     };
 
     public void printGameBoard() {
-        for (char[] chars : game) {
+        for (char[] chars : board) {
             System.out.println(" -------------");
             for (char aChar : chars) {
                 System.out.print(" | ");
@@ -20,46 +18,58 @@ public class BoardGame {
         System.out.println(" -------------");
     }
 
-    public boolean findWinner(char[][] game) {// po zwroceniu true wygrywa gracz z ostatniego ruchu
-        if (checkCols(game) || checkRows(game) || checkDiags(game)) {
+    public boolean findWinner() {// po zwroceniu true wygrywa gracz z ostatniego ruchu
+        if (checkCols() || checkRows() || checkDiags()) {
             return true;
         }
         return false;
     }
 
-    public boolean checkRows(char game[][]) {
-        for (int i = 0; i < game.length; i++) {
-            if (game[i][0] != ' ' && game[i][0] == game[i][1] && game[i][0] == game[i][2]) {
+    public boolean checkRows() {
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][0] != ' ' && board[i][0] == board[i][1] && board[i][0] == board[i][2]) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean checkCols(char game[][]) {
-        for (int i = 0; i < game.length; i++) {
-            if (game[0][i] != ' ' && game[0][i] == game[1][i] && game[0][i] == game[2][i]) {
+    public boolean checkCols() {
+        for (int i = 0; i < board.length; i++) {
+            if (board[0][i] != ' ' && board[0][i] == board[1][i] && board[0][i] == board[2][i]) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean checkDiags(char game[][]) {
-        if (game[0][0] != ' ' && game[0][0] == game[1][1] && game[0][0] == game[2][2]) {
+    public boolean checkDiags() {
+        if (board[0][0] != ' ' && board[0][0] == board[1][1] && board[0][0] == board[2][2]) {
             return true;
-        } else return game[2][2] != ' ' && game[2][2] == game[1][1] && game[2][2] == game[2][0];
+        } else return board[2][2] != ' ' && board[2][2] == board[1][1] && board[2][2] == board[2][0];
     }
 
-    public boolean checkGame(char game[][]) {// do sprawdzenia czy mozna grac dalej
+    public boolean checkGame() {// do sprawdzenia czy mozna grac dalej
         char emptyField = ' ';
-        for (int i = 0; i < game.length; i++) {
-            for (int j = 0; j < game[i].length; j++) {
-                if (game[i][j] ==emptyField){
-                    return true;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] ==emptyField){
+                    return false;
                 }
             }
         }
+        return true;
+    }
+    public boolean checkField(int x, int y) {
+        if (x <= board.length && x >= 0 && y <= board.length && y >= 0) {
+            if (board[x][y] == ' ') {
+                return true;
+            } else {
+                System.out.println("Niepoprawne współrzędne");
+                return false;
+            }
+        }
+        System.out.println("Niepoprawne współrzędne");
         return false;
     }
 }

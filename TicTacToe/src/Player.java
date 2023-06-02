@@ -5,6 +5,7 @@ public class Player {
 
     public Player() {
         this.idPlayer = players +1;
+        players++;
     }
 
     public void setPointsPlayer(int pointsPlayer) {
