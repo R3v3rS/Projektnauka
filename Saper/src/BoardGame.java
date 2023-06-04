@@ -28,11 +28,19 @@ public class BoardGame {
     }
 
     public void printBoardTest() {
+        System.out.println("  1 2 3 4 5 6 7 8 9 10");
+        char a = 'A';
         for (char[] chars : board) {
-            System.out.println();
+            System.out.println(" ---------------------");
+            System.out.print(a);
+            a++;
             for (int i = 0; i < board.length; i++) {
-                System.out.print(chars[i]);
+
+                System.out.print("|"+ chars[i]);
             }
+            System.out.print("|");
+            System.out.println();
         }
+        System.out.println(" ---------------------");
     }
 }
